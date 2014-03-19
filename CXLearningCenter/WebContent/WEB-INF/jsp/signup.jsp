@@ -6,6 +6,7 @@
 <title>Signup Page</title>
 </head>
 	<body>
+	
 	<form name='f' action = "signup/adduser.html" method='POST'>
 		<table>
 			<tr>
