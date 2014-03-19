@@ -17,11 +17,10 @@
 </style>   
 
     <!-- Core CSS - Include with every page -->
-    <link href="css/bootstrap.min.css" rel="stylesheet">
-    <link href="font-awesome/css/font-awesome.css" rel="stylesheet">
-
+    <link href="Resourse/bootstrap/css/bootstrap.min.css" rel="stylesheet">
+    <link href="Resourse/bootstrap/font-awesome/css/font-awesome.css" rel="stylesheet">
     <!-- SB Admin CSS - Include with every page -->
-    <link href="css/sb-admin.css" rel="stylesheet">
+    <link href="Resourse/bootstrap/css/sb-admin.css" rel="stylesheet">
 
 </head>
 <body onload='document.f.j_username.focus();'>
@@ -39,7 +38,7 @@
             <div class="col-md-4 col-md-offset-4">
                 <div class="login-panel panel panel-default">
                     <div class="panel-heading">
-                        <h3 class="panel-title">Please Sign In</h3>
+                        <h3 class="panel-title">Please Login</h3>
                     </div>
                     <div class="panel-body">
                         <form name='f' action="<c:url value='j_spring_security_check' />" method='POST'>
@@ -57,7 +56,9 @@
                                 </div>
                                 <!-- Change this to a button or input when using this as a form -->
                                 <input name="submit" type="submit" value="Login" class="btn btn-lg btn-success btn-block"></input>
-                                <input name="signup" type="submit" value="SignUp" class="btn btn-lg btn-success btn-block"></input>                                
+                                <a href="testprimary.html"  class="btn btn-lg btn-success btn-block">Cancel</a> 
+                                <a href="signup.html"  class="btn btn-lg btn-block btn-link">Sign Up</a> 
+                                                          
                                 
                             </fieldset>
                         </form>
@@ -68,9 +69,9 @@
     </div>
 
     <!-- Core Scripts - Include with every page -->
-    <script src="js/jquery-1.10.2.js"></script>
-    <script src="js/bootstrap.min.js"></script>
-    <script src="js/plugins/metisMenu/jquery.metisMenu.js"></script>
+    <script src="Resourse/bootstrap/js/jquery-1.10.2.js"></script>
+    <script src="Resourse/bootstrap/js/bootstrap.min.js"></script>
+    <script src="Resourse/bootstrap/js/plugins/metisMenu/jquery.metisMenu.js"></script>
 
     <!-- SB Admin Scripts - Include with every page -->
     
