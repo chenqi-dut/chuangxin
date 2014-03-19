@@ -47,7 +47,7 @@
 	 <property name="basePackage" value="cx.learningcenter.mapper" />	 
   </bean>
 
-  <bean id="userService" class="org.mybatis.spring.mapper.MapperFactoryBean">     
+  <bean id="userMapper" class="org.mybatis.spring.mapper.MapperFactoryBean">     
      <property name="sqlSessionFactory" ref="sqlSessionFactory" />     
      <property name="mapperInterface" value="cx.learningcenter.inter.IUserOperation" /> 
   </bean> 

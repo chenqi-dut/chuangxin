@@ -16,7 +16,7 @@ import cx.learningcenter.model.User;
 public class SignupController {
 	
 	@Autowired
-	IUserOperation userService;
+	IUserOperation userMapper;
 	
 	@RequestMapping("/signup")
 	public ModelAndView show(HttpServletRequest request,HttpServletResponse response){
@@ -36,7 +36,7 @@ public class SignupController {
 		User user = new User();
 		user.setUserName(userName);
 		user.setPassWord(passWord);
-		userService.addUser(user);
+		userMapper.addUser(user);
 		return mav;
 	}
 }
