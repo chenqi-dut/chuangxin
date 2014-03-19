@@ -10,7 +10,8 @@
 
     <context:component-scan
         base-package="cx.learningcenter.controller" />
-
+	
+	
     <bean id="viewResolver"
         class="org.springframework.web.servlet.view.UrlBasedViewResolver">
         <property name="viewClass"
