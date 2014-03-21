@@ -1,15 +1,29 @@
 package cx.learningcenter.controller;
 
+import java.io.IOException;
+
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
+import org.apache.catalina.connector.Request;
+import org.codehaus.jackson.JsonGenerationException;
+import org.codehaus.jackson.map.JsonMappingException;
+import org.codehaus.jackson.map.ObjectMapper;
+import org.codehaus.jackson.map.ObjectWriter;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
+import org.springframework.validation.BindingResult;
+import org.springframework.validation.annotation.Validated;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.servlet.ModelAndView;
+
+
+
+
+
 
 import cx.learningcenter.inter.IProblemOperation;
 import cx.learningcenter.model.Problem;
@@ -44,12 +58,26 @@ public class UserProblemController {
 	}
 	
 	@RequestMapping(value="/problem/{problemId}", method = RequestMethod.GET)
-	public @ResponseBody Problem getProblem(@PathVariable int problemId,HttpServletRequest request,HttpServletResponse response ) {
+	public @ResponseBody String getProblem(@PathVariable int problemId) {
  		
 		Problem problem = new Problem();
 		problem = problemMapper.selectProblemById(problemId);
-		
-		return problem;
+//		return problem;
+		ObjectWriter ow = new ObjectMapper().writer().withDefaultPrettyPrinter();
+		String json = "";
+		try {
+			json = ow.writeValueAsString(problem);
+		} catch (JsonGenerationException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		} catch (JsonMappingException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		} catch (IOException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+		return json;
  
 	}
 }
