@@ -15,7 +15,7 @@
         base-package="cx.learningcenter.controller" />
 	
 <!-- 	<mvc:resources mapping="/Resources/**" location="/CXLearningCenter/Resources/" />   -->
-	
+	<mvc:annotation-driven />
     <bean id="viewResolver"
         class="org.springframework.web.servlet.view.UrlBasedViewResolver">
         <property name="viewClass"
