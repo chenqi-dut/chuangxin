@@ -5,10 +5,12 @@
 	<resultMap type="Problem" id="resultListProblem">
         <id column="idproblem" property="id" />
         <result column="description" property="description" />
+        <result column="title" property="title" />
         <result column="answer" property="answer" />
         <result column="hardness" property="hardness" />
         <result column="category" property="category" />
-        <result column="imagenum" property="imageNum" />
+        <result column="imagenum_d" property="imageNum_d" />
+        <result column="imagenum_a" property="imageNum_a" />
         <result column="imageurl1" property="imageurl1" />
         <result column="imageurl2" property="imageurl2" />
         <result column="imageurl3" property="imageurl3" />
