@@ -1,10 +1,12 @@
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
+<%@ page contentType="text/html; charset=UTF-8"%>
 <!DOCTYPE html>
 <html>
 
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
 <title>Login Page</title>
 <style>
 .errorblock {
@@ -24,7 +26,7 @@
 
 </head>
 <body onload='document.f.j_username.focus();'>
-	<h3>Login with Username and Password (Custom Page)</h3>
+	<h3>请用用户名和密码登陆(Custom Page)</h3>
  
 	<c:if test="${not empty error}">
 		<div class="errorblock">
