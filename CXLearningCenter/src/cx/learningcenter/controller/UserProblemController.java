@@ -29,4 +29,15 @@ public class UserProblemController {
 		return mav;
  
 	}
+	
+	@RequestMapping(value="/testprimary", method = RequestMethod.GET)
+	public ModelAndView primary(HttpServletRequest request,HttpServletResponse response ) {
+ 		
+		ModelAndView mav=new ModelAndView("testprimary");
+		Problem problem = new Problem();
+		problem = problemMapper.selectProblemById(1);
+		mav.addObject("problem", problem);
+		return mav;
+ 
+	}
 }
