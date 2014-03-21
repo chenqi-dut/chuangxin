@@ -49,15 +49,15 @@ xmlHttp.send();
     <title>Test Primary</title>
 
     <!-- Core CSS - Include with every page -->
-    <link href="Resourse/bootstrap/css/bootstrap.min.css" rel="stylesheet">
-    <link href="Resourse/bootstrap/font-awesome/css/font-awesome.css" rel="stylesheet">
+    <link href="${pageContext.request.contextPath}/Resourse/bootstrap/css/bootstrap.min.css" rel="stylesheet">
+    <link href="${pageContext.request.contextPath}/Resourse/bootstrap/font-awesome/css/font-awesome.css" rel="stylesheet">
 
     <!-- Page-Level Plugin CSS - Dashboard -->
-    <link href="Resourse/bootstrap/css/plugins/morris/morris-0.4.3.min.css" rel="stylesheet">
-    <link href="Resourse/bootstrap/css/plugins/timeline/timeline.css" rel="stylesheet">
+    <link href="${pageContext.request.contextPath}/Resourse/bootstrap/css/plugins/morris/morris-0.4.3.min.css" rel="stylesheet">
+    <link href="${pageContext.request.contextPath}/Resourse/bootstrap/css/plugins/timeline/timeline.css" rel="stylesheet">
 
     <!-- SB Admin CSS - Include with every page -->
-    <link href="Resourse/bootstrap/css/sb-admin.css" rel="stylesheet">
+    <link href="${pageContext.request.contextPath}/Resourse/bootstrap/css/sb-admin.css" rel="stylesheet">
 
 </head>
 
@@ -231,19 +231,19 @@ xmlHttp.send();
     <!-- /#wrapper -->
 
     <!-- Core Scripts - Include with every page -->
-    <script src="Resourse/bootstrap/js/jquery-1.10.2.js"></script>
-    <script src="Resourse/bootstrap/js/bootstrap.min.js"></script>
-    <script src="Resourse/bootstrap/js/plugins/metisMenu/jquery.metisMenu.js"></script>
+    <script src="${pageContext.request.contextPath}/Resourse/bootstrap/js/jquery-1.10.2.js"></script>
+    <script src="${pageContext.request.contextPath}/Resourse/bootstrap/js/bootstrap.min.js"></script>
+    <script src="${pageContext.request.contextPath}/Resourse/bootstrap/js/plugins/metisMenu/jquery.metisMenu.js"></script>
 
     <!-- Page-Level Plugin Scripts - Dashboard -->
-    <script src="Resourse/bootstrap/js/plugins/morris/raphael-2.1.0.min.js"></script>
-    <script src="Resourse/bootstrap/js/plugins/morris/morris.js"></script>
+    <script src="${pageContext.request.contextPath}/Resourse/bootstrap/js/plugins/morris/raphael-2.1.0.min.js"></script>
+    <script src="${pageContext.request.contextPath}/Resourse/bootstrap/js/plugins/morris/morris.js"></script>
 
     <!-- SB Admin Scripts - Include with every page -->
-    <script src="Resourse/bootstrap/js/sb-admin.js"></script>
+    <script src="${pageContext.request.contextPath}/Resourse/bootstrap/js/sb-admin.js"></script>
 
     <!-- Page-Level Demo Scripts - Dashboard - Use for reference -->
-    <script src="Resourse/bootstrap/js/demo/dashboard-demo.js"></script>
+    <script src="${pageContext.request.contextPath}/Resourse/bootstrap/js/demo/dashboard-demo.js"></script>
 
 </body>
 </html>
