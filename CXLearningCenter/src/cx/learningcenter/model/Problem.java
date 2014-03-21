@@ -3,15 +3,35 @@ package cx.learningcenter.model;
 public class Problem {
 
 	private int id;
+	private String title;
 	private String description;
 	private String answer;
 	private int hardness;
 	private int category;
-	private int imageNum;
+	private int imageNum_d;
+	private int imageNum_a;
 	private String imageurl1;
 	private String imageurl2;
 	private String imageurl3;
 	
+	public String getTitle() {
+		return title;
+	}
+	public void setTitle(String title) {
+		this.title = title;
+	}
+	public int getImageNum_d() {
+		return imageNum_d;
+	}
+	public void setImageNum_d(int imageNum_d) {
+		this.imageNum_d = imageNum_d;
+	}
+	public int getImageNum_a() {
+		return imageNum_a;
+	}
+	public void setImageNum_a(int imageNum_a) {
+		this.imageNum_a = imageNum_a;
+	}
 	public int getId() {
 		return id;
 	}
@@ -41,12 +61,6 @@ public class Problem {
 	}
 	public void setCategory(int category) {
 		this.category = category;
-	}
-	public int getImageNum() {
-		return imageNum;
-	}
-	public void setImageNum(int imageNum) {
-		this.imageNum = imageNum;
 	}
 	public String getImageurl1() {
 		return imageurl1;
