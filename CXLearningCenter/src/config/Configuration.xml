@@ -2,8 +2,17 @@
 <!DOCTYPE configuration PUBLIC "-//mybatis.org//DTD Config 3.0//EN"
 "http://mybatis.org/dtd/mybatis-3-config.dtd">
 <configuration>
+	<settings>
+        <!-- changes from the defaults -->
+       <setting name="lazyLoadingEnabled" value="false" />
+    </settings>
+
     <typeAliases> 
         <typeAlias alias="User" type="cx.learningcenter.model.User"/>
+        <typeAlias alias="Problem" type="cx.learningcenter.model.Problem"/>
     </typeAliases> 
-
+	<mappers>  
+        <mapper resource="cx/learningcenter/mapper/User.xml" />  
+        <mapper resource="cx/learningcenter/mapper/Problem.xml" />  
+    </mappers>
 </configuration>

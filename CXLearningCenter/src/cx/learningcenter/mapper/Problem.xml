@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" 
+"http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="cx.learningcenter.inter.IProblemOperation">
+	<resultMap type="Problem" id="resultListProblem">
+        <id column="idproblem" property="id" />
+        <result column="description" property="description" />
+        <result column="answer" property="answer" />
+        <result column="hardness" property="hardness" />
+        <result column="category" property="category" />
+        <result column="imagenum" property="imageNum" />
+        <result column="imageurl1" property="imageurl1" />
+        <result column="imageurl2" property="imageurl2" />
+        <result column="imageurl3" property="imageurl3" />
+    </resultMap>
+	<select id="selectProblemById" parameterType="int" resultType="Problem">
+	    select * from `problem` where idproblem = #{id}
+	</select>
+</mapper>
