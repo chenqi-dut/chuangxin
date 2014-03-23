@@ -18,4 +18,7 @@
 	<select id="selectProblemById" parameterType="int" resultType="Problem">
 	    select * from `problem` where idproblem = #{id}
 	</select>
+	<select id="selectProblems"  resultMap = "resultListProblem">
+	    select * from `problem`
+	</select>
 </mapper>
