@@ -25,9 +25,7 @@
     <link href="Resourse/bootstrap/css/sb-admin.css" rel="stylesheet">
 
 </head>
-<body onload='document.f.j_username.focus();'>
-	<h3>请用用户名和密码登陆(Custom Page)</h3>
- 
+<body onload='document.f.j_username.focus();'>	
 	<c:if test="${not empty error}">
 		<div class="errorblock">
 			Your login attempt was not successful, try again.<br /> Caused :
@@ -36,30 +34,40 @@
 	</c:if>
 		
 	    <div class="container">
+	    
+	    <div class="row">
+	        <div class="col-md-12 ">
+	     		<div class="jumbotron thumbnail"> <!--  -->
+					<div>
+						<h1 style="text-align:center"><font face="微软雅黑">创意思维在线答题系统</font></h1>						
+					</div>				
+				</div>	     
+	     	</div>
+	     </div>
         <div class="row">
             <div class="col-md-4 col-md-offset-4">
                 <div class="login-panel panel panel-default">
                     <div class="panel-heading">
-                        <h3 class="panel-title">Please Login</h3>
+                        <h3 class="panel-title">请登录</h3>
                     </div>
                     <div class="panel-body">
                         <form name='f' action="<c:url value='j_spring_security_check' />" method='POST'>
                             <fieldset>
                                 <div class="form-group">
-                                    <input class="form-control" placeholder="username" name="j_username" type="text" autofocus>
+                                    <input class="form-control" placeholder="学号" name="j_username" type="text" autofocus>
                                 </div>
                                 <div class="form-group">
-                                    <input class="form-control" placeholder="password" name="j_password" type="password" value="">
+                                    <input class="form-control" placeholder="密码" name="j_password" type="password" value="">
                                 </div>
                                 <div class="checkbox">
                                     <label>
-                                        <input name="remember" type="checkbox" value="Remember Me">Remember Me
+                                        <input name="remember" type="checkbox" value="Remember Me">记住密码
                                     </label>
                                 </div>
                                 <!-- Change this to a button or input when using this as a form -->
-                                <input name="submit" type="submit" value="Login" class="btn btn-lg btn-success btn-block"></input>
-                                <a href="testprimary.html"  class="btn btn-lg btn-success btn-block">Cancel</a> 
-                                <a href="signup.html"  class="btn btn-lg btn-block btn-link">Sign Up</a> 
+                                <input name="submit" type="submit" value="登录" class="btn btn-lg btn-success btn-block"></input>
+                                <a href="testprimary.html"  class="btn btn-lg btn-success btn-block">取消</a> 
+                                <a href="signup.html"  class="btn btn-lg btn-block btn-link">注册</a> 
                                                           
                                 
                             </fieldset>
@@ -73,11 +81,7 @@
     <!-- Core Scripts - Include with every page -->
     <script src="Resourse/bootstrap/js/jquery-1.10.2.js"></script>
     <script src="Resourse/bootstrap/js/bootstrap.min.js"></script>
-    <script src="Resourse/bootstrap/js/plugins/metisMenu/jquery.metisMenu.js"></script>
-
-    <!-- SB Admin Scripts - Include with every page -->
-    
-    <!-- <script src="js/sb-admin.js"></script>	-->
+    <!-- <script src="Resourse/bootstrap/js/plugins/metisMenu/jquery.metisMenu.js"></script>    -->
 	
 </body>
 </html>
