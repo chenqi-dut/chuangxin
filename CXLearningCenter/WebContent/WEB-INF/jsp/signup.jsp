@@ -36,7 +36,7 @@
                         <form name='f' action = "signup/adduser.html" method='POST'>
                             <fieldset>
                                 <div class="form-group">
-                                    <label> 用户名(学号) </label>
+                                    <label> 学号 </label>
                                     <input class="form-control" placeholder="username" name="username" id="username" type="text" autofocus>
                                 </div>
                                 <div class="form-group">
@@ -65,9 +65,10 @@
         var user=document.getElementById("username" );
         var pass1=document.getElementById("password1" );
         var pass2=document.getElementById("password2" );
-          if(user.value.length!=9){
-              alert( '输入学号作为用户名' );
-              pass1.focus();
+        var userpattern = /^[0-9]{1,}$/; 
+          if(!username.value.match(userpattern)){
+              alert( '请输入学号作为用户名' );
+              user.focus();
               stopDefault(e);
               return false ;
           }          
