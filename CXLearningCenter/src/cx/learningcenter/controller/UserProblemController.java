@@ -50,7 +50,7 @@ public class UserProblemController {
  
 	}
 	
-	@RequestMapping(value="/progress", method = RequestMethod.GET)
+	@RequestMapping(value="/progresspage", method = RequestMethod.GET)
 	public ModelAndView userprogress(HttpServletRequest request,HttpServletResponse response ) {
  		
 		ModelAndView mav=new ModelAndView("userprogress");
@@ -58,7 +58,7 @@ public class UserProblemController {
  
 	}
 	
-	@RequestMapping(value="/learningcenter", method = RequestMethod.GET)
+	@RequestMapping(value="/learningcenterpage", method = RequestMethod.GET)
 	public ModelAndView userlearningcenter(HttpServletRequest request,HttpServletResponse response ) {
  		
 		ModelAndView mav=new ModelAndView("userlearningcenter");
@@ -66,7 +66,7 @@ public class UserProblemController {
  
 	}
 	
-	@RequestMapping(value="/menu", method = RequestMethod.GET)
+	@RequestMapping(value="/menupage", method = RequestMethod.GET)
 	public ModelAndView usercontent(HttpServletRequest request,HttpServletResponse response ) {
  		
 		ModelAndView mav=new ModelAndView("usermenu");
