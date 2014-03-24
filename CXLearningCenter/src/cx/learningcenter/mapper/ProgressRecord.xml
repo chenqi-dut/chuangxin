@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" 
+"http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="cx.learningcenter.inter.IProgressRecordOperation">
+	<resultMap type="ProgressRecord" id="resultListProgressRecord">
+        <id column="id" property="id" />
+        <result column="userid" property="userid" />
+        <result column="problemid" property="problemid" />
+    </resultMap>
+	<select id="selectProgressRecordByUserid" parameterType="int" resultType="ProgressRecord">
+	    select * from `progress_record` where userid = #{id}
+	</select>
+<!-- 	<select id="selectProgressRecord"  resultMap = "resultListProgressRecord">
+	    select * from `ProgressRecord`
+	</select> -->
+</mapper>

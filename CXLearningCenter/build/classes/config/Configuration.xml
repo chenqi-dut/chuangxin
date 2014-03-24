@@ -10,9 +10,15 @@
     <typeAliases> 
         <typeAlias alias="User" type="cx.learningcenter.model.User"/>
         <typeAlias alias="Problem" type="cx.learningcenter.model.Problem"/>
+        <typeAlias alias="Hardness" type="cx.learningcenter.model.Hardness"/>
+        <typeAlias alias="Category" type="cx.learningcenter.model.Category"/>
+        <typeAlias alias="ProgressRecord" type="cx.learningcenter.model.ProgressRecord"/>
     </typeAliases> 
 	<mappers>  
         <mapper resource="cx/learningcenter/mapper/User.xml" />  
         <mapper resource="cx/learningcenter/mapper/Problem.xml" />  
+        <mapper resource="cx/learningcenter/mapper/Category.xml" />  
+        <mapper resource="cx/learningcenter/mapper/Hardness.xml" /> 
+        <mapper resource="cx/learningcenter/mapper/ProgressRecord.xml" />
     </mappers>
 </configuration>
