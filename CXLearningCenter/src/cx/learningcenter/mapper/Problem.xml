@@ -15,10 +15,14 @@
         <result column="imageurl2" property="imageurl2" />
         <result column="imageurl3" property="imageurl3" />
     </resultMap>
-	<select id="selectProblemById" parameterType="int" resultType="Problem">
+<!-- 	<select id="selectProblemById" parameterType="int" resultType="Problem">
 	    select * from `problem` where idproblem = #{id}
-	</select>
+	</select> -->
 	<select id="selectProblems"  resultMap = "resultListProblem">
 	    select * from `problem`
+	</select>
+	
+	<select id="selectProblemids" parameterType="map" resultType="Integer">
+	    select idproblem from `problem` where hardness = #{hardness} and category = #{category}
 	</select>
 </mapper>

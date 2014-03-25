@@ -84,6 +84,16 @@ public class UserProblemController {
  
 	}
 	
+	@RequestMapping(value="/problemids/{hardness}/{category}", method = RequestMethod.GET)
+	public @ResponseBody String getProblemids(@PathVariable int hardness,@PathVariable int category) {
+ 		
+		List<Integer> ids = new ArrayList<Integer>();
+		ids = problemMapper.selectProblemids(hardness,category);
+		String json = JsonHelper.convertToJson(ids);
+		return json;
+ 
+	}
+	
 	@RequestMapping(value="/problems", method = RequestMethod.GET)
 	public @ResponseBody String getProblems() {
  		
