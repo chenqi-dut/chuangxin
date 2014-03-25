@@ -3,7 +3,7 @@ package cx.learningcenter.model;
 public class ProgressRecord {
 	private int id;
 	private int userid;
-	private int problemid;
+	private Problem problem;
 	public int getId() {
 		return id;
 	}
@@ -16,11 +16,11 @@ public class ProgressRecord {
 	public void setUserid(int userid) {
 		this.userid = userid;
 	}
-	public int getProblemid() {
-		return problemid;
+	public Problem getProblem() {
+		return problem;
 	}
-	public void setProblemid(int problemid) {
-		this.problemid = problemid;
+	public void setProblem(Problem problem) {
+		this.problem = problem;
 	}
 	
 }

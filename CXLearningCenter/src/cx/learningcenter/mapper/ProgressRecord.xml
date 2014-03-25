@@ -2,15 +2,37 @@
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" 
 "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 <mapper namespace="cx.learningcenter.inter.IProgressRecordOperation">
-	<resultMap type="ProgressRecord" id="resultListProgressRecord">
-        <id column="id" property="id" />
-        <result column="userid" property="userid" />
-        <result column="problemid" property="problemid" />
-    </resultMap>
-	<select id="selectProgressRecordByUserid" parameterType="int" resultType="ProgressRecord">
-	    select * from `progress_record` where userid = #{id}
-	</select>
-<!-- 	<select id="selectProgressRecord"  resultMap = "resultListProgressRecord">
-	    select * from `ProgressRecord`
+<!-- 	<resultMap type="ProgressRecord" id="resultListProgressRecord">
+		<id column="id" property="id" />
+		<result column="userid" property="userid" />
+		<result column="problem" property="problem" />
+	</resultMap> -->
+<!-- 	<select id="selectProgressRecordByUserid" parameterType="int"
+		resultType="ProgressRecord">
+		select * from `progress_record` where userid = #{id}
 	</select> -->
+
+	<resultMap id="resultProgressRecordList" type="ProgressRecord">
+		<id property="id" column="id" />
+		<result property="userid" column="userid" />
+
+		<association property="problem" javaType="Problem">
+			<id column="idproblem" property="id" />
+			<result column="description" property="description" />
+			<result column="title" property="title" />
+			<result column="answer" property="answer" />
+			<result column="hardness" property="hardness" />
+			<result column="category" property="category" />
+			<result column="imagenum_d" property="imageNum_d" />
+			<result column="imagenum_a" property="imageNum_a" />
+			<result column="imageurl1" property="imageurl1" />
+			<result column="imageurl2" property="imageurl2" />
+			<result column="imageurl3" property="imageurl3" />
+		</association>
+	</resultMap>
+	
+	<select id="selectProgressRecordByUserid" parameterType="int"
+		resultMap="resultProgressRecordList">
+		select * from progress_record,problem where userid = #{id} and progress_record.problemid = problem.idproblem
+	</select>
 </mapper>
