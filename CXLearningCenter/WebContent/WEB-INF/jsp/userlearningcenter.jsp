@@ -22,7 +22,7 @@
 	</script>  
 
 
-    <title>Test Primary</title>
+    <title>学习中心</title>
 
     <!-- Core CSS - Include with every page -->
     <link href="${pageContext.request.contextPath}/Resourse/bootstrap/css/bootstrap.min.css" rel="stylesheet">
@@ -34,7 +34,15 @@
 
     <!-- SB Admin CSS - Include with every page -->
     <link href="${pageContext.request.contextPath}/Resourse/bootstrap/css/sb-admin.css" rel="stylesheet">
-<link href="${pageContext.request.contextPath}/Resourse/bootstrap/css/DT_bootstrap.css" rel="stylesheet">
+	<link href="${pageContext.request.contextPath}/Resourse/bootstrap/css/DT_bootstrap.css" rel="stylesheet">
+	<script src="${pageContext.request.contextPath}/Resourse/bootstrap/js/bootstrap.min.js"></script>
+    <script src="${pageContext.request.contextPath}/Resourse/bootstrap/js/plugins/metisMenu/jquery.metisMenu.js"></script>
+
+    <!-- Page-Level Plugin Scripts - Dashboard -->
+    <script src="${pageContext.request.contextPath}/Resourse/bootstrap/js/plugins/morris/raphael-2.1.0.min.js"></script>
+    <script src="${pageContext.request.contextPath}/Resourse/bootstrap/js/plugins/morris/morris.js"></script>
+    <script src="${pageContext.request.contextPath}/Resourse/bootstrap/js/jquery.cookie.js"></script>
+    
 </head>
 
 <body>
@@ -46,6 +54,10 @@
         <!-- /.navbar-static-side -->
 
         <div id="page-wrapper">
+       		 <ol class="breadcrumb">
+       			 <li class="active" id="level">Data</li>
+ 				 <li class="active" id="category">Data</li>
+            </ol>
             <div class="row">
                 <div class="col-lg-12">
                     <h1 class="page-header">欢迎访问在线答题网站</h1>
@@ -86,46 +98,23 @@
                             <i class="fa fa-bar-chart-o fa-fw"></i> 参考答案
                         </div>
                         <div id="AnsCont"class="panel-body">
-                        	<table class="table table-striped table-hover table-bordered datatable" id="article">
-                        	<thead>
-                        	<tr>
-                        	<th>id</th>
-                        	<th>title</th>
-                        	<th>description</th>
-                        	<th>answer</th>
-                        	<th>hardness</th>
-                        	<th>category</th>
-                        	<th>imageNum_d</th>
-                        	<th>imageNum_a</th>
-                        	</tr>
-                        	</thead>
-                        	<tbody>
-                        	</tbody>
-                        	</table>
+                        	<p></p>
                         </div>                   
                         
                       </div>
                     <!-- /.panel -->
                     <div class="panel panel-default">                       
                         <div class="panel-body">
-                         <div class="col-lg-12">
+                         <nav class="navbar navbar-default" role="navigation">
                            
-                           		<button id="LastQuestion" type="button" class=" btn btn-link" onclick=" ">上一题</button>
-                           		                                     
-                                            <select class="form-control-select" id="GoNumber">
-                                                <option>1</option>
-                                                <option>2</option>
-                                                <option>3</option>
-                                                <option>4</option>
-                                                <option>5</option>                                                
-                                            </select>                                            
-                                           <!-- select option 应该实现动态绑定 -->                                  	
+                           		<button id="LastQuestion" type="button" class=" btn btn-link" onclick=" ">上一题</button>                                   
+                                <input type="text" style="width:30px;" class="form-control" id="GoNumber">                                	
                                 <button id="GoTo" type="button" class=" btn btn-default">Go</button>
                                 <button id="NextQuestion" type="button" class="btn btn-link">下一题</button>
 
                                 <button id="CheckAnswer" style="float:right;" type="button" class=" btn btn-info" >查看答案</button> 
                             
-                            </div>
+                            </nav>
                         </div>
                         <!-- /.panel-body -->
                     </div>
@@ -143,15 +132,7 @@
 
     <!-- Core Scripts - Include with every page -->
 
-    <script src="${pageContext.request.contextPath}/Resourse/bootstrap/js/bootstrap.min.js"></script>
-    <script src="${pageContext.request.contextPath}/Resourse/bootstrap/js/plugins/metisMenu/jquery.metisMenu.js"></script>
 
-    <!-- Page-Level Plugin Scripts - Dashboard -->
-    <script src="${pageContext.request.contextPath}/Resourse/bootstrap/js/plugins/morris/raphael-2.1.0.min.js"></script>
-    <script src="${pageContext.request.contextPath}/Resourse/bootstrap/js/plugins/morris/morris.js"></script>
-    
-<script src="${pageContext.request.contextPath}/Resourse/bootstrap/js/jquery.dataTables.js"></script>
-<script src="${pageContext.request.contextPath}/Resourse/bootstrap/js/DT_bootstrap.js"></script>
      <script >
 
  		function changeByAjax(num)
@@ -175,6 +156,9 @@
 			$("#AnsPanel").hide();
 		}
  		$(document).ready(function(){
+ 			
+ 			$("#level").text($.cookie('level'));
+ 			$("#category").text($.cookie('category'));
  			changeByAjax(2);
  			$("#LastQuestion").click(function(){
  				var num=parseInt($("#CurQuesNum").text())-1;
@@ -187,28 +171,7 @@
  				changeByAjax(parseInt($("#CurQuesNum").text())+1);
  			});
  			
- 			$('#article').dataTable({
-					"oLanguage": {//语言国际化
-					},
-					"bServerSide":false,//服务端处理分页
-					"sAjaxSource": '/CXLearningCenter/user/problems.html',
-					'bPaginate': false,  //是否分页。
-					"bProcessing": true, //当datatable获取数据时候是否显示正在处理提示信息。
-					'bFilter': false,  //是否使用内置的过滤功能
-					'bLengthChange': true, //是否允许自定义每页显示条数.
-					//'iDisplayLength':1, //每页显示10条记录
-					"sPaginationType": "bootstrap", //分页样式   full_numbers
-					"aoColumns": [
-					{ "sClass": "center", "sName": "id" },
-					{ "sClass": "center", "sName": "title" },
-					{ "sClass": "center", "sName": "description" },
-					{ "sClass": "center", "sName": "answer" },
-					{ "sClass": "center", "sName": "hardness" },
-					{ "sClass": "center", "sName": "category" },
-					{ "sClass": "center", "sName": "imageNum_d" },
-					{ "sClass": "center", "sName": "imageNum_a" }
-					]
-					});
+ 		
 		
  			$("#CheckAnswer").click(function(){
  				
