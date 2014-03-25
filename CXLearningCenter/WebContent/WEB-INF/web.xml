@@ -15,15 +15,8 @@
     <param-value>classpath*:config/applicationContext.xml,
     classpath*:config/spring-security.xml</param-value>
   </context-param>
-  <listener>
-    <listener-class>org.springframework.web.context.ContextLoaderListener</listener-class>
-  </listener>
-  <listener>
-    <listener-class>
-			org.springframework.web.context.ContextCleanupListener</listener-class>
-  </listener>
   
-  <filter>  
+<!--     <filter>  
   <filter-name>CharacterEncodingFilter</filter-name>  
   <filter-class>org.springframework.web.filter.CharacterEncodingFilter</filter-class>  
   <init-param>  
@@ -34,9 +27,17 @@
 <filter-mapping>  
   <filter-name>CharacterEncodingFilter</filter-name>  
   <url-pattern>/*</url-pattern>  
-</filter-mapping> 
+</filter-mapping>  -->
   
+  <listener>
+    <listener-class>org.springframework.web.context.ContextLoaderListener</listener-class>
+  </listener>
+  <listener>
+    <listener-class>
+			org.springframework.web.context.ContextCleanupListener</listener-class>
+  </listener>
   
+
   <servlet>
         <servlet-name>CXLearningCenter</servlet-name>
         <servlet-class>
