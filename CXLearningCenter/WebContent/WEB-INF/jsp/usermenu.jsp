@@ -8,10 +8,13 @@
     <script src="${pageContext.request.contextPath}/Resourse/bootstrap/js/jquery.dataTables.js"></script>
     <script src="${pageContext.request.contextPath}/Resourse/bootstrap/js/DT_bootstrap.js"></script>
     <link href="${pageContext.request.contextPath}/Resourse/bootstrap/css/DT_bootstrap.css" rel="stylesheet">
+<title>
+	学习中心
+</title>
  
 <body>
 	<div id="wrapper">
-		<jsp:include page="/WEB-INF/jsp/home.jsp"/> 
+		<jsp:include page="/WEB-INF/jsp/userhome.jsp"/> 
 		 <div id="page-wrapper">
 			<ol class="breadcrumb">
  				 <li class="active" id="level">Data</li>
@@ -43,6 +46,8 @@
 	            	$("#category a").each(function(index){
 			    		$(this).bind("click",function(){
 			    			$.cookie('category',data[index].categoryName);
+			    			$.cookie('categoryID',data[index].id);
+			    			$.cookie('problem',1);
 			    			location.href="learningcenterpage.html";
 			    		});
 			    	});

@@ -5,21 +5,11 @@
 <head>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-       <script src="${pageContext.request.contextPath}/Resourse/bootstrap/js/jquery-1.10.2.js"></script>
-    <script type="text/javascript">   
-    window.onload = function (){    
-    	$.ajax({
-    		url:'/CXLearningCenter/user/progress.html',
-            dataType: 'json',
-            success : function(data) {
-            
-            }
-    	});
-       
-    };  
+    <script src="${pageContext.request.contextPath}/Resourse/bootstrap/js/jquery-1.10.2.js"></script>
+    <script src="${pageContext.request.contextPath}/Resourse/bootstrap/js/jquery.cookie.js"></script>
+
     
-  
-	</script>  
+
 
 
     <title>学习中心</title>
@@ -39,8 +29,7 @@
     <script src="${pageContext.request.contextPath}/Resourse/bootstrap/js/plugins/metisMenu/jquery.metisMenu.js"></script>
 
     <!-- Page-Level Plugin Scripts - Dashboard -->
-    <script src="${pageContext.request.contextPath}/Resourse/bootstrap/js/plugins/morris/raphael-2.1.0.min.js"></script>
-    <script src="${pageContext.request.contextPath}/Resourse/bootstrap/js/plugins/morris/morris.js"></script>
+
     <script src="${pageContext.request.contextPath}/Resourse/bootstrap/js/jquery.cookie.js"></script>
     
 </head>
@@ -50,7 +39,7 @@
     <div id="wrapper">
 
       
-        <jsp:include page="/WEB-INF/jsp/home.jsp"/> 
+        <jsp:include page="/WEB-INF/jsp/userhome.jsp"/> 
         <!-- /.navbar-static-side -->
 
         <div id="page-wrapper">
@@ -58,18 +47,13 @@
        			 <li class="active" id="level">Data</li>
  				 <li class="active" id="category">Data</li>
             </ol>
-            <div class="row">
-                <div class="col-lg-12">
-                    <h1 class="page-header">欢迎访问在线答题网站</h1>
-                </div>
-                <!-- /.col-lg-12 -->
-            </div>
+           
             <!-- /.row 显示标题-->
             <div class="row">
                 <div class="col-lg-12">                   
                     <div class="panel panel-default">
                         <div class="panel-heading">
-                            <i class="fa fa-bar-chart-o fa-fw"></i> 题目<b id="CurQuesNum"></b>
+                            <i class="fa fa-bar-chart-o fa-fw"></i> 题目<b id="CurQuesNum"></b><b id="Pro-title"></b>
                         </div>
                         <!-- /.panel-heading -->
                         <div class="panel-body">
@@ -105,16 +89,25 @@
                     <!-- /.panel -->
                     <div class="panel panel-default">                       
                         <div class="panel-body">
-                         <nav class="navbar navbar-default" role="navigation">
-                           
-                           		<button id="LastQuestion" type="button" class=" btn btn-link" onclick=" ">上一题</button>                                   
-                                <input type="text" style="width:30px;" class="form-control" id="GoNumber">                                	
-                                <button id="GoTo" type="button" class=" btn btn-default">Go</button>
-                                <button id="NextQuestion" type="button" class="btn btn-link">下一题</button>
+                         <nav class="navbar navbar-default" >
+					        <div class="navbar-header">
 
-                                <button id="CheckAnswer" style="float:right;" type="button" class=" btn btn-info" >查看答案</button> 
-                            
-                            </nav>
+					        </div>
+					        <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-2">
+					          <div class="navbar-form navbar-left" >
+					            <button id="LastQuestion" class=" btn btn-link">上一题</button> 
+					            <div class="form-group">
+					              <input id="Go-value" type="text" style="width:60px;" class="form-control" >
+					            </div>
+					            <button id="Goto" class="btn btn-default">Go</button>
+					            <button id="NextQuestion"  class="btn btn-link">下一题</button>
+					          </div>
+					          <div class="navbar-form navbar-right" >
+					          	<button id="CheckAnswer" class=" btn btn-primary" >查看答案</button> 
+					          	<button id="return" class=" btn btn-primary" >返回</button>
+					          </div>
+					        </div>
+					      </nav>
                         </div>
                         <!-- /.panel-body -->
                     </div>
@@ -134,19 +127,21 @@
 
 
      <script >
-
- 		function changeByAjax(num)
+ 
+ 		function changeByAjax(id,num)
         {
 			$.ajax({
-	            url : '/CXLearningCenter/user/problem/'+num+'.html',
+	            url : '/CXLearningCenter/user/problem/'+id+'.html',
 	            dataType: 'json',
 	            success : function(data) {
 	            	$("div#CurQuesCont").children("p").text(data.description);
 	  	 		 	$("b#CurQuesNum").text(num);
+	  	 		 	$("#Pro-title").text(data.title);
 	  	 		    $("#AnsCont").children("p").text(data.answer);
+	  	 		    $("#CheckAnswer").text("查看答案");
 	  	 		 	if(data.imageNum_d>0)
 	  	 		 	{
-	  	 		 		var ImgSrc="${pageContext.request.contextPath}/Resourse/image/"+num+"/"+1+".jpg";
+	  	 		 		var ImgSrc="${pageContext.request.contextPath}/Resourse/image/"+id+"/"+1+".jpg";
 	  	 		 	    $("#CurPic").html("");
 	  	 		 		$("#CurPic").append("<img src="+ImgSrc+">");
 	  	 		 	}
@@ -155,21 +150,79 @@
 	        });
 			$("#AnsPanel").hide();
 		}
- 		$(document).ready(function(){
+ 		function checkProblem(num,length)
+ 		{
+ 			if(num==1)$("#LastQuestion").attr("disabled",true);
+			else $("#LastQuestion").attr("disabled",false);
  			
+ 			if(num==length){
+ 				$("#NextQuestion").attr("disabled",true);
+ 				$("#return").show();
+ 			}
+ 			else {
+ 				$("#NextQuestion").attr("disabled",false);
+ 				$("#return").hide();
+ 			}
+ 			
+ 		}
+ 		$(document).ready(function(){
+
  			$("#level").text($.cookie('level'));
  			$("#category").text($.cookie('category'));
- 			changeByAjax(2);
- 			$("#LastQuestion").click(function(){
- 				var num=parseInt($("#CurQuesNum").text())-1;
- 				if(num==1)$(this).attr("disabled",true);
- 				else $(this).attr("disabled",false);
- 				changeByAjax(num);
- 				
- 			});
- 			$("#NextQuestion").click(function(){
- 				changeByAjax(parseInt($("#CurQuesNum").text())+1);
- 			});
+            $.ajax({
+            	 url : '/CXLearningCenter/user/problemids/'+$.cookie('levelID')+'/'+$.cookie("categoryID")+'.html',
+            	 dataType: 'json',
+            	 success : function(data) {
+            	     var num=parseInt($.cookie('problem'));
+            	     var problemID=data[num-1];
+            		
+            		changeByAjax(problemID,num);
+            		checkProblem(num,data.length);
+            		$("#LastQuestion").click(function(){
+            			num=num-1;
+            			checkProblem(num,data.length);
+            		    
+         				changeByAjax(data[num-1],num);
+         				
+         			});
+         			$("#NextQuestion").click(function(){
+         				$.ajax({url:'/CXLearningCenter/user/setprogress/'+data[num-1]+'.html'});
+         				num=num+1;
+         				checkProblem(num,data.length);
+         				
+         				changeByAjax(data[num-1],num);
+         				
+         				
+         			});
+         			$("#Goto").click(function(){
+         				var value=$("#Go-value").val();
+         				var reg=/^[1-9]\d*$|^0$/;
+         				if(reg.test(value))
+         				{
+         					value=parseInt(value);
+         				    if(value>data.length||value<=0)
+         				    {
+         				    	alert("超出题库范围");
+         				    }
+         				    else
+         				    {
+         				    	num=value;
+         				    	checkProblem(num,data.length);
+         				    	changeByAjax(data[num-1],value);
+         				    }
+         				}
+         				else{
+         					alert("请输入数字");
+         				}
+         			});
+         			$("#return").click(function(){
+         				location.href="menupage.html";
+         			});
+         			
+            		
+            	 }
+            });
+ 			
  			
  		
 		
@@ -189,6 +242,7 @@
 
  				
  			});
+ 			
  			
 		});
  		

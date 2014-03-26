@@ -42,7 +42,7 @@
     <div id="wrapper">
 
       
-        <jsp:include page="/WEB-INF/jsp/home.jsp"/> 
+        <jsp:include page="/WEB-INF/jsp/userhome.jsp"/> 
         <!-- /.navbar-static-side -->
 
         <div id="page-wrapper">

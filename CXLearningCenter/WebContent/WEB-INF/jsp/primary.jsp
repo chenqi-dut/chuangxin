@@ -15,7 +15,7 @@
 	</script>  
 <body>
 	<div id="wrapper">
-		<jsp:include page="/WEB-INF/jsp/home.jsp"/> 
+		<jsp:include page="/WEB-INF/jsp/userhome.jsp"/> 
 		 <div id="page-wrapper">
 			<div class="jumbotron">
 		  		<p>上次学习到第几章第几题，是否继续？</p>

@@ -11,6 +11,9 @@
     <!-- SB Admin CSS - Include with every page -->
     <link href="${pageContext.request.contextPath}/Resourse/bootstrap/css/sb-admin.css" rel="stylesheet">
 	<link href="${pageContext.request.contextPath}/Resourse/bootstrap/css/DT_bootstrap.css" rel="stylesheet">
+	
+	<script src="${pageContext.request.contextPath}/Resourse/bootstrap/js/jquery-1.10.2.js"></script>
+	<script src="${pageContext.request.contextPath}/Resourse/bootstrap/js/jquery.cookie.js"></script>
 <body>
 
   <nav class="navbar navbar-default navbar-static-top" style="margin-bottom: 0">
@@ -64,16 +67,7 @@
                     </li>
                     <li>
                         <a href="#"><i class="fa fa-bar-chart-o fa-fw"></i> 学习中心<span class="fa arrow"></span></a>
-                        <ul class="nav nav-second-level">
-                             <li>
-                                <a href="primary.html">初级</a>
-                            </li>
-                            <li>
-                                <a href="intermediate.html">中级</a>
-                            </li>
-                             <li>
-                                <a href="senior.html">高级</a>
-                            </li>
+                        <ul class="nav nav-second-level" id="hardness">
                         </ul>
                         <!-- /.nav-second-level -->
                     </li>
@@ -101,6 +95,34 @@
             </div>
             <!-- /.sidebar-collapse -->
         </nav>
- 
+ 	
+ 	<script>
+ 	$(document).ready(function(){
+ 		$.ajax({
+  			url : '/CXLearningCenter/user/hardnesses.html',
+            dataType: 'json',
+            success : function(data) {
+            	var levelID={};
+            	var ul=$("#hardness");
+            	for(var i in data)
+            	{
+            		var item=data[i];
+            			ul.append("<li><a href='#'>"+item.level+"</a></li>");
+            			levelID[item.level]=item.id;
+            	}
+            	$("#hardness a").each(function(index){
+         			$(this).bind("click",function(){
+         				$.cookie('level',$(this).text());
+         				$.cookie('levelID',levelID[$(this).text()])
+         			    location.href="menupage.html"; 
+         			});
+         			
+         		});
+            }
+ 			
+ 		});
+ 	});
+ 		
+ 	</script>
 </body>
 </html>
