@@ -137,6 +137,15 @@ public class UserProblemController {
 		String json = getProgressByUserName(user.getUsername());
 		return json;
 	}
+	
+	@RequestMapping(value="/setprogress", method = RequestMethod.GET)
+	public @ResponseBody String setProgress(Authentication auth) {
+ 		
+		User user =(User) auth.getPrincipal();
+		// todo
+		String json = getProgressByUserName(user.getUsername());
+		return json;
+	}
 /*	@RequestMapping(value="/getproblemids/{hardness}/{category}",method = RequestMethod.GET)
 	public @ResponseBody String getProblemIds(@PathVariable int hardness,@PathVariable int category){
 		
