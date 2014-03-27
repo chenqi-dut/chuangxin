@@ -26,8 +26,8 @@
 		
 	<bean id="dataSource" class="org.apache.commons.dbcp.BasicDataSource"
 		destroy-method="close" p:driverClassName="com.mysql.jdbc.Driver"
-		p:url="jdbc:mysql://192.168.2.55:3306/cxlc?characterEncoding=utf8" 
-		p:username= "701" p:password="701db"
+		p:url="jdbc:mysql://192.168.2.90:3306/cxlc?characterEncoding=utf8" 
+		p:username= "root" p:password="root"
 		p:maxActive="10" p:maxIdle="10">
 	</bean>
 	
