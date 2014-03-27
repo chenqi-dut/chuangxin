@@ -14,7 +14,7 @@ public class AdminOperationController {
 	@RequestMapping(value="/adminpage", method = RequestMethod.GET)
 	public ModelAndView adminhome(HttpServletRequest request,HttpServletResponse response ) {
  		
-		ModelAndView mav=new ModelAndView("admin");
+		ModelAndView mav=new ModelAndView("adminproblem");
 		return mav;
  
 	}

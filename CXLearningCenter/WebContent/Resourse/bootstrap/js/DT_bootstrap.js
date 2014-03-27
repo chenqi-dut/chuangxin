@@ -3,7 +3,7 @@ $.extend( true, $.fn.dataTable.defaults, {
 	"sDom": "<'row-fluid'<'span6'l><'span6'f>r>t<'row-fluid'<'span6'i><'span6'p>>",
 	"sPaginationType": "bootstrap",
 	"oLanguage": {
-	    "sLengthMenu": "每页显示 _MENU_ 条记录"
+	    "sLengthMenu": ""
 	}
 } );
 

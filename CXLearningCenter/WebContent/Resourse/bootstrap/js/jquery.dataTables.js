@@ -1124,7 +1124,7 @@
 					/* Render if needed - if bUseRendered is true then we already have the rendered
 					 * value in the data source - so can just use that
 					 */
-					nTd.innerHTML = (typeof oCol.fnRender === 'function' && (!oCol.bUseRendered || oCol.mData === null)) ?
+					nTd.innerHTML = (typeof oCol.fnRender === 'function' && (oCol.bUseRendered || oCol.mData === null)) ?
 						_fnRender( oSettings, iRow, i ) :
 						_fnGetCellData( oSettings, iRow, i, 'display' );
 				

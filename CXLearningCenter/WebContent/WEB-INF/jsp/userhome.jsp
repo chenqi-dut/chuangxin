@@ -75,22 +75,15 @@
                     <li>
                         <a href="tables.html"><i class="fa fa-table fa-fw"></i> 得分统计</a>
                     </li>
-                    
+                    <sec:authorize ifAllGranted="ROLE_ADMIN">
                     <li>
-                        <a href="#"><i class="fa fa-wrench fa-fw"></i> 答题记录<span class="fa arrow"></span></a>
-                        <ul class="nav nav-second-level">
-                            <li>
-                                <a href="panels-wells.html">Panels and Wells</a>
-                            </li>
-                            <li>
-                                <a href="buttons.html">Buttons</a>
-                            </li>                    
-                        </ul>
-                        <!-- /.nav-second-level -->
+                      <a href="adminpage.html"><i class="fa fa-edit fa-fw"></i> 题库设置</a>
                     </li>
+                    </sec:authorize>
                     <li>
                         <a href="forms.html"><i class="fa fa-edit fa-fw"></i> 意见反馈</a>
                     </li>
+               
                  </ul>
                 <!-- /#side-menu -->
             </div>
