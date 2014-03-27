@@ -15,13 +15,8 @@
 		<logout logout-success-url="/logout.html" />
 	</http>
  
-	<authentication-manager>
-<!-- 	  <authentication-provider>
-	    <user-service>
-		<user name="kurt" password="123456" authorities="ROLE_USER" />
-	    </user-service>
-	  </authentication-provider> -->
-	  
+	<authentication-manager alias="authenticationManager">
+  
 	  <authentication-provider>
 	<!--   <password-encoder hash="sha-256" /> -->
     <jdbc-user-service 

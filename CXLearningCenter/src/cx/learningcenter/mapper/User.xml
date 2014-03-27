@@ -8,6 +8,10 @@
 	    select * from `user` where iduser = #{id}
 	</select>
 	
+	<select id="selectUserByUsername" parameterType="String" resultType="User">
+	    select * from `user` where username = #{userName}
+	</select>
+	
 	<!-- 为了返回list 类型而定义的returnMap -->
 	<resultMap type="User" id="resultListUser">
         <id column="iduser" property="id" />
@@ -16,9 +20,9 @@
         <result column="rolename" property="roleName" />
     </resultMap>
 	
-	<select id="selectUsers" parameterType="string" resultMap="resultListUser">
+	<!-- <select id="selectUsers" parameterType="string" resultMap="resultListUser">
 	    select * from user where username like #{userName}
-	</select>
+	</select> -->
 	
 	<insert id="addUser" parameterType="User" 
         useGeneratedKeys="true" keyProperty="id"> 
