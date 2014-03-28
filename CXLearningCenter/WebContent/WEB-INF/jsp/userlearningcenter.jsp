@@ -6,31 +6,9 @@
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <script src="${pageContext.request.contextPath}/Resourse/bootstrap/js/jquery-1.10.2.js"></script>
-    <script src="${pageContext.request.contextPath}/Resourse/bootstrap/js/jquery.cookie.js"></script>
-
-    
-
-
-
+    <script src="${pageContext.request.contextPath}/Resourse/bootstrap/js/bootstrap.min.js"></script>
     <title>学习中心</title>
 
-    <!-- Core CSS - Include with every page -->
-    <link href="${pageContext.request.contextPath}/Resourse/bootstrap/css/bootstrap.min.css" rel="stylesheet">
-    <link href="${pageContext.request.contextPath}/Resourse/bootstrap/font-awesome/css/font-awesome.css" rel="stylesheet">
-
-    <!-- Page-Level Plugin CSS - Dashboard -->
-    <link href="${pageContext.request.contextPath}/Resourse/bootstrap/css/plugins/morris/morris-0.4.3.min.css" rel="stylesheet">
-    <link href="${pageContext.request.contextPath}/Resourse/bootstrap/css/plugins/timeline/timeline.css" rel="stylesheet">
-
-    <!-- SB Admin CSS - Include with every page -->
-    <link href="${pageContext.request.contextPath}/Resourse/bootstrap/css/sb-admin.css" rel="stylesheet">
-	<link href="${pageContext.request.contextPath}/Resourse/bootstrap/css/DT_bootstrap.css" rel="stylesheet">
-	<script src="${pageContext.request.contextPath}/Resourse/bootstrap/js/bootstrap.min.js"></script>
-    <script src="${pageContext.request.contextPath}/Resourse/bootstrap/js/plugins/metisMenu/jquery.metisMenu.js"></script>
-
-    <!-- Page-Level Plugin Scripts - Dashboard -->
-
-    <script src="${pageContext.request.contextPath}/Resourse/bootstrap/js/jquery.cookie.js"></script>
     
 </head>
 
@@ -66,9 +44,7 @@
                                 </div>
                                 <!-- /.col-lg-8 (nested) 读取的题目的文字部分 -->
                                 <div class="col-lg-4">
-                        
                                   <i class="fa" id="CurPic"></i>
-                                   
                                 </div>
                                 <!-- /.col-lg-4 (nested) 如果读取的题目中，会有图形，放在此处 -->
                             </div>
@@ -82,7 +58,6 @@
                             <i class="fa fa-bar-chart-o fa-fw"></i> 参考答案
                         </div>
                         <div id="AnsCont"class="panel-body">
-                        	<p></p>
                         </div>                   
                         
                       </div>
@@ -98,6 +73,7 @@
 					            <button id="LastQuestion" class=" btn btn-link">上一题</button> 
 					            <div class="form-group">
 					              <input id="Go-value" type="text" style="width:60px;" class="form-control" >
+					              <span id = 'sp' class="alert-danger" style ="display: none;"></span >
 					            </div>
 					            <button id="Goto" class="btn btn-default">Go</button>
 					            <button id="NextQuestion"  class="btn btn-link">下一题</button>
@@ -134,17 +110,49 @@
 	            url : '/CXLearningCenter/user/problem/'+id+'.html',
 	            dataType: 'json',
 	            success : function(data) {
-	            	$("div#CurQuesCont").children("p").text(data.description);
+	            	$("div#CurQuesCont").children("p").html(data.description.replace(/\\n/g,"<br>"));
 	  	 		 	$("b#CurQuesNum").text(num);
 	  	 		 	$("#Pro-title").text(data.title);
-	  	 		    $("#AnsCont").children("p").text(data.answer);
+	  	 		    $("#CurPic").html("");
 	  	 		    $("#CheckAnswer").text("查看答案");
 	  	 		 	if(data.imageNum_d>0)
 	  	 		 	{
-	  	 		 		var ImgSrc="${pageContext.request.contextPath}/Resourse/image/"+id+"/"+1+".jpg";
-	  	 		 	    $("#CurPic").html("");
-	  	 		 		$("#CurPic").append("<img src="+ImgSrc+">");
+	  	 		 		var pichtml="";
+	  	 		 		for(var i=1;i<=data.imageNum_d;++i)
+	  	 		 		{
+	  	 		 			 pichtml+="<img src="+"${pageContext.request.contextPath}/Resourse/image/"+id+"/"+i+".png>";
+	  	 		 		}
+	  	 		 		$("#CurPic").html(pichtml);
 	  	 		 	}
+	  	 		 	
+	  	 		    if(data.imageNum_a==0)
+	  	 		 	{
+	  	 		 		$("#AnsCont").html("<p>"+data.answer.replace(/\\n/g,"<br>")+"</p>");
+	  	 		 	}
+	  	 		 	else if(!(data.answer===null))
+	  	 		 	{
+	  	 		 		var anshtml='<div class="col-lg-4"><div class="panel-body"><p>'+
+	  	 		 					data.answer.replace(/\\n/g,"<br>")+'</p></div></div> <div class="col-lg-4"><i class="fa">';
+	  	 		 					
+ 		 				for(var i=1;i<=data.imageNum_a;++i)
+	  	 		 		{
+ 		 					anshtml+="<img src="+"${pageContext.request.contextPath}/Resourse/image/"+id+"/a"+i+".png>";
+	  	 		 		}
+ 		 				anshtml+='</i> </div>';
+	  	 		 		$("#AnsCont").html(anshtml);
+                        
+	  	 		 	}
+	  	 		 	else
+	                {
+		  	 		 	var anshtml='<div class="panel-body"><div class="col-lg-4"><i class="fa">';
+		 					
+						for(var i=1;i<=data.imageNum_a;++i)
+				 		{
+							anshtml+="<img src="+"${pageContext.request.contextPath}/Resourse/image/"+id+"/a"+i+".png>";
+				 		}
+						anshtml+='</i> </div></div>';
+				 		$("#AnsCont").html(anshtml);
+	                }
 	            
 	            }
 	        });
@@ -202,17 +210,22 @@
          					value=parseInt(value);
          				    if(value>data.length||value<=0)
          				    {
-         				    	alert("超出题库范围");
+         				    	  $('#sp').css("display","");
+         				    	  $('#sp').html( "请输入"+data.length+"以下数字");
+             				      $('#Go-value').val("");
          				    }
          				    else
          				    {
+         				    	$('#sp').css("display","none");
          				    	num=value;
          				    	checkProblem(num,data.length);
          				    	changeByAjax(data[num-1],value);
          				    }
          				}
          				else{
-         					alert("请输入数字");
+         					$('#sp').css("display","");
+   				    	    $('#sp').html( "请输入数字");
+       				        $('#Go-value').val("");
          				}
          			});
          			$("#return").click(function(){

@@ -15,7 +15,7 @@
     <!-- SB Admin CSS - Include with every page -->
     <link href="${pageContext.request.contextPath}/Resourse/bootstrap/css/sb-admin.css" rel="stylesheet">
 	<link href="${pageContext.request.contextPath}/Resourse/bootstrap/css/DT_bootstrap.css" rel="stylesheet">
-	<link href="${pageContext.request.contextPath}/Resourse/bootstrap/css/bootstrap.min.css" rel="stylesheet">
+
 	
 
     <script src="${pageContext.request.contextPath}/Resourse/bootstrap/js/jquery-1.10.2.js"></script>
@@ -61,6 +61,9 @@
                     <!-- /.panel -->
                 </div>
                 <!-- /.col-lg-12 -->                
+            </div>
+            <div>
+            	
             </div>
             <!-- /.row 题目列表-->
 		</div>

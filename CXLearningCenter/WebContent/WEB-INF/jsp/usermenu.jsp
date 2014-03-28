@@ -3,11 +3,8 @@
 <html>
     <script src="${pageContext.request.contextPath}/Resourse/bootstrap/js/jquery-1.10.2.js"></script>
     <script src="${pageContext.request.contextPath}/Resourse/bootstrap/js/bootstrap.min.js"></script>
-    <script src="${pageContext.request.contextPath}/Resourse/bootstrap/js/jquery.cookie.js"></script>
-    <link href="${pageContext.request.contextPath}/Resourse/bootstrap/css/bootstrap.min.css" rel="stylesheet">
-    <script src="${pageContext.request.contextPath}/Resourse/bootstrap/js/jquery.dataTables.js"></script>
-    <script src="${pageContext.request.contextPath}/Resourse/bootstrap/js/DT_bootstrap.js"></script>
-    <link href="${pageContext.request.contextPath}/Resourse/bootstrap/css/DT_bootstrap.css" rel="stylesheet">
+
+
 <title>
 	学习中心
 </title>
@@ -39,14 +36,12 @@
 	            	{
 	            		var tr=$("<tr></tr>");
 	            		tr.appendTo(table);
-	            		$("<td>"+data[i].categoryName+"</td>").appendTo(tr);
-	            		$("<td><a style='cursor:pointer'>练习</a></td>").appendTo(tr);
-	            		
+	            		$("<td><a style='cursor:pointer'>"+data[i].categoryName+"</a> <span class='pull-right text-muted small'><em>共"+data.length+"题</em></span></td>").appendTo(tr);
 	            	}
 	            	$("#category a").each(function(index){
 			    		$(this).bind("click",function(){
 			    			$.cookie('category',data[index].categoryName);
-			    			$.cookie('categoryID',data[index].id);
+							$.cookie('categoryID',data[index].id);
 			    			$.cookie('problem',1);
 			    			location.href="learningcenterpage.html";
 			    		});

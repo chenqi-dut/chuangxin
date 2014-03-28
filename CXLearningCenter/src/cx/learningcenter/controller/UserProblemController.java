@@ -66,6 +66,13 @@ public class UserProblemController {
  
 	}
 	
+	@RequestMapping(value="/userinfopage", method = RequestMethod.GET)
+	public ModelAndView userinfo(HttpServletRequest request,HttpServletResponse response ) {
+ 		
+		ModelAndView mav=new ModelAndView("userinfo");
+		return mav;
+ 
+	}
 	@RequestMapping(value="/menupage", method = RequestMethod.GET)
 	public ModelAndView usercontent(HttpServletRequest request,HttpServletResponse response ) {
  		

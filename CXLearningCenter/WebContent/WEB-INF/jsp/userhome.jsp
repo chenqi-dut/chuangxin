@@ -11,24 +11,24 @@
     <!-- SB Admin CSS - Include with every page -->
     <link href="${pageContext.request.contextPath}/Resourse/bootstrap/css/sb-admin.css" rel="stylesheet">
 	<link href="${pageContext.request.contextPath}/Resourse/bootstrap/css/DT_bootstrap.css" rel="stylesheet">
+		<link href="${pageContext.request.contextPath}/Resourse/bootstrap/css/bootstrap.min.css" rel="stylesheet">
 	
 	<script src="${pageContext.request.contextPath}/Resourse/bootstrap/js/jquery-1.10.2.js"></script>
 	<script src="${pageContext.request.contextPath}/Resourse/bootstrap/js/jquery.cookie.js"></script>
 <body>
 
-  <nav class="navbar navbar-default navbar-static-top" style="margin-bottom: 0">
-            <div class="navbar-header">
+ 		<nav class="navbar navbar-default navbar-static-top" style="margin-bottom: 0">
+            <div class="navbar-header" style="background-image:url('${pageContext.request.contextPath}/Resourse/bootstrap/images/bg2.png');width:100%;height:50px;">
+            
                 <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".sidebar-collapse">
                     <span class="sr-only">Toggle navigation</span>
                     <span class="icon-bar"></span>
                     <span class="icon-bar"></span>
                     <span class="icon-bar"></span>
                 </button>
-                <a class="navbar-brand" href="index.html">在线题库</a>
-            </div>
-            <!-- /.navbar-header -->
-            
-            <ul class="nav navbar-top-links navbar-right">
+                <a class="navbar-brand" href="index.html" ><font face="微软雅黑" color=" #FFFFFF" >在线题库</font></a>
+                
+                <ul class="nav navbar-top-links navbar-right" >
                 <li class="dropdown">
                     <a class="dropdown-toggle" data-toggle="dropdown" href="#">
                         <i class="fa fa-user fa-fw"></i>  <i class="fa fa-caret-down"></i>
@@ -36,17 +36,21 @@
                     <ul class="dropdown-menu dropdown-user">
                         <li><a href="login.html"><i class="fa fa-user fa-fw"></i><sec:authentication property="principal.username" /> </a>
                         </li>
-                        <li><a href="#"><i class="fa fa-gear fa-fw"></i> Settings</a>
+                        <li><a href="#"><i class="fa fa-gear fa-fw"></i>设置</a>
                         </li>
                         <li class="divider"></li>
-                        <li><a href="<c:url value="/j_spring_security_logout" />" > Logout</a><%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
-
+                       <li><a href="<c:url value="/j_spring_security_logout" />" > 注销</a><%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
                         </li>
                     </ul>
                     <!-- /.dropdown-user -->
                 </li>
                 <!-- /.dropdown -->
             </ul>
+                
+            </div>
+            <!-- /.navbar-header -->
+            
+           
             <!-- /.navbar-top-links -->
         </nav>
  <nav class="navbar-default navbar-static-side" >
@@ -73,7 +77,7 @@
                         <!-- /.nav-second-level -->
                     </li>
                     <li>
-                        <a href="tables.html"><i class="fa fa-table fa-fw"></i> 得分统计</a>
+                        <a href="userinfopage.html"><i class="fa fa-table fa-fw"></i>用户信息</a>
                     </li>
                     <sec:authorize ifAllGranted="ROLE_ADMIN">
                     <li>
