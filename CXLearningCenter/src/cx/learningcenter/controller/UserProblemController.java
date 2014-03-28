@@ -21,6 +21,7 @@ import cx.learningcenter.inter.ICategoryOperation;
 import cx.learningcenter.inter.IHardnessOperation;
 import cx.learningcenter.inter.IProblemOperation;
 import cx.learningcenter.inter.IProgressRecordOperation;
+import cx.learningcenter.inter.IUserOperation;
 import cx.learningcenter.model.Category;
 import cx.learningcenter.model.Hardness;
 import cx.learningcenter.model.Problem;
@@ -38,6 +39,8 @@ public class UserProblemController {
 	ICategoryOperation categoryMapper;
 	@Autowired
 	IProgressRecordOperation progressrecordMapper;
+	@Autowired
+	IUserOperation userMapper;
 	
 	@RequestMapping(value="/testproblem", method = RequestMethod.GET)
 	public ModelAndView printWelcome(HttpServletRequest request,HttpServletResponse response ) {
@@ -132,7 +135,10 @@ public class UserProblemController {
 	public @ResponseBody String getProgressByUserName(@PathVariable String username) {
  		
 		ProgressRecord pr = new ProgressRecord();
-		pr = progressrecordMapper.selectProgressRecordByUserid(3);
+		cx.learningcenter.model.User user = new cx.learningcenter.model.User();
+		// todo: 将两次查询通过resultmap关联压缩成一次，以提高效率，减少查询次数
+		user = userMapper.selectUserByUsername(username);
+		pr = progressrecordMapper.selectProgressRecordByUserid(user.getId());
 		String json = JsonHelper.convertToJson(pr);
 		return json;
 	}
@@ -145,13 +151,16 @@ public class UserProblemController {
 		return json;
 	}
 	
-	@RequestMapping(value="/setprogress", method = RequestMethod.GET)
-	public @ResponseBody String setProgress(Authentication auth) {
+	@RequestMapping(value="/setprogress/{problemid}", method = RequestMethod.GET)
+	public @ResponseBody void setProgress(Authentication auth,@PathVariable int problemid) {
  		
 		User user =(User) auth.getPrincipal();
-		// todo
-		String json = getProgressByUserName(user.getUsername());
-		return json;
+		// todo: 将两次查询通过resultmap关联压缩成一次，以提高效率，减少查询次数
+		cx.learningcenter.model.User dbuser = new cx.learningcenter.model.User();
+		dbuser = userMapper.selectUserByUsername(user.getUsername());
+		progressrecordMapper.setProgressRecordByUserid(dbuser.getId(),problemid);
+/*		String json = "";
+		return json;*/
 	}
 /*	@RequestMapping(value="/getproblemids/{hardness}/{category}",method = RequestMethod.GET)
 	public @ResponseBody String getProblemIds(@PathVariable int hardness,@PathVariable int category){

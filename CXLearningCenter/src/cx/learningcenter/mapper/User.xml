@@ -4,11 +4,11 @@
 
 <mapper namespace="cx.learningcenter.inter.IUserOperation">
 
-	<select id="selectUserById" parameterType="int" resultType="User">
+	<select id="selectUserById" parameterType="int" resultMap="resultListUser">
 	    select * from `user` where iduser = #{id}
 	</select>
 	
-	<select id="selectUserByUsername" parameterType="String" resultType="User">
+	<select id="selectUserByUsername" parameterType="String" resultMap="resultListUser">
 	    select * from `user` where username = #{userName}
 	</select>
 	
