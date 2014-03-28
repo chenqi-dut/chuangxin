@@ -34,20 +34,8 @@
                             <i class="fa fa-bar-chart-o fa-fw"></i> 题目<b id="CurQuesNum"></b><b id="Pro-title"></b>
                         </div>
                         <!-- /.panel-heading -->
-                        <div class="panel-body">
-                            <div class="row">
-                                <div class="col-lg-4">
-                                    <div id="CurQuesCont" class="panel-body">
-                                            <p></p>
-                                    </div>                                    
-                                    <!-- /.table-responsive -->
-                                </div>
-                                <!-- /.col-lg-8 (nested) 读取的题目的文字部分 -->
-                                <div class="col-lg-4">
-                                  <i class="fa" id="CurPic"></i>
-                                </div>
-                                <!-- /.col-lg-4 (nested) 如果读取的题目中，会有图形，放在此处 -->
-                            </div>
+                        <div class="panel-body" id="ProCont">
+                          
                             <!-- /.row -->
                                        
                         </div>
@@ -117,14 +105,19 @@
 	  	 		    $("#CheckAnswer").text("查看答案");
 	  	 		 	if(data.imageNum_d>0)
 	  	 		 	{
-	  	 		 		var pichtml="";
+	  	 		 		var problemhtml='<div class="col-lg-4"><p>'+data.description.replace(/\\n/g,"<br>")+
+	  	 		 						'</p></div><div class="col-lg-4"><i class="fa"><i>';
 	  	 		 		for(var i=1;i<=data.imageNum_d;++i)
 	  	 		 		{
-	  	 		 			 pichtml+="<img src="+"${pageContext.request.contextPath}/Resourse/image/"+id+"/"+i+".png>";
+	  	 		 			problemhtml+="<img src="+"${pageContext.request.contextPath}/Resourse/image/"+id+"/"+i+".png>";
 	  	 		 		}
-	  	 		 		$("#CurPic").html(pichtml);
+	  	 		 	    problemhtml+='</i></div>';
+	  	 		 		$("#ProCont").html(problemhtml);
 	  	 		 	}
-	  	 		 	
+	  	 		 	else
+	  	 		 	{
+	  	 		 		$("#ProCont").html("<p>"+data.description.replace(/\\n/g,"<br>")+"</p>");
+	  	 		 	}
 	  	 		    if(data.imageNum_a==0)
 	  	 		 	{
 	  	 		 		$("#AnsCont").html("<p>"+data.answer.replace(/\\n/g,"<br>")+"</p>");
