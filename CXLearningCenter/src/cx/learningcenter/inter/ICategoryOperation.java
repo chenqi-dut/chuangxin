@@ -5,5 +5,6 @@ import java.util.List;
 import cx.learningcenter.model.Category;
 
 public interface ICategoryOperation {
-	public List<Category> selectCategories(); 
+	public List<Category> selectCategories(int hardness); 
+	public Category selectCategoryById(int id);
 }

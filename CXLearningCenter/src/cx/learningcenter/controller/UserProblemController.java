@@ -122,11 +122,11 @@ public class UserProblemController {
 		return json;
 	}
 	
-	@RequestMapping(value="/categories", method = RequestMethod.GET)
-	public @ResponseBody String getCategories() {
+	@RequestMapping(value="/categories/{hardness}", method = RequestMethod.GET)
+	public @ResponseBody String getCategories(@PathVariable int hardness) {
  		
 		List<Category> categories = new ArrayList<Category>();
-		categories = categoryMapper.selectCategories();
+		categories = categoryMapper.selectCategories(hardness);
 		String json = JsonHelper.convertToJson(categories);
 		return json;
 	}
@@ -139,6 +139,9 @@ public class UserProblemController {
 		// todo: 将两次查询通过resultmap关联压缩成一次，以提高效率，减少查询次数
 		user = userMapper.selectUserByUsername(username);
 		pr = progressrecordMapper.selectProgressRecordByUserid(user.getId());
+		
+		Category cat = new Category();
+	//	cat =
 		String json = JsonHelper.convertToJson(pr);
 		return json;
 	}
