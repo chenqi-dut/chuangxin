@@ -139,8 +139,14 @@ public class UserProblemController {
 		cx.learningcenter.model.User user = new cx.learningcenter.model.User();
 		// todo: 将两次查询通过resultmap关联压缩成一次，以提高效率，减少查询次数
 		user = userMapper.selectUserByUsername(username);
+		if(user == null){
+			return null;
+		}
 		ProgressRecord pr = progressrecordMapper.selectProgressRecordByUserid(user.getId());
 		
+		if(pr == null){
+			return null;
+		}
 		Category cat = categoryMapper.selectCategoryById(pr.getProblem().getCategory());
 		
 		Hardness hard = hardnessMapper.selectHardnessById(pr.getProblem().getHardness());
