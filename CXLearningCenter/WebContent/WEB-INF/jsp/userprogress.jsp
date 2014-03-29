@@ -39,24 +39,26 @@
 	            	{
 	            		
 	                	$.ajax({
-	                   	 url : '/CXLearningCenter/user/problemids/'+data.problem.hardness+'/'+data.problem.category+'.html',
+	                   	 url : '/CXLearningCenter/user/problemids/'+data.hardness.id+'/'+data.category.id+'.html',
 	                   	 dataType: 'json',
 	                   	 success : function(arr) {
 	                   		var num;
 	                   	 	for(var i=0;i<arr.length;++i)
 	                   	 	{
-	                   	 		if(arr[i]==data.problem.id)
+	                   	 		if(arr[i]==data.progressRecord.problem.id)
 	                   	 		{
 	                   	 			num=i+1;
 	                   	 			break;
 	                   	 		}
 	                   	 	}
-	                   	 $("#pro-warning").html("亲爱的<sec:authentication property='principal.username' />,你上次做到hehe第"+num+"题,是否继续？");
+	                   	 $("#pro-warning").html('亲爱的<sec:authentication property="principal.username" />,你上次做到'+data.hardness.level+
+	                   			 				 '难度'+data.category.categoryName+'的第'+num+'题"'+data.progressRecord.problem.title+
+	                   			 				 '",是否继续？');
 		                   	$("#bt_yes").click(function(){
 		            			$.cookie('level',"hehe");
-		            			$.cookie('levelID',data.problem.hardness); 
+		            			$.cookie('levelID',data.progressRecord.problem.hardness); 
 		            			$.cookie('category',"nimei");
-		            			$.cookie('categoryID',data.problem.category); 
+		            			$.cookie('categoryID',data.progressRecord.problem.category); 
 		            			$.cookie('problem',num);
 		            	    	location.href="learningcenterpage.html";
 		            	    });

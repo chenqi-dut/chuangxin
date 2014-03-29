@@ -28,7 +28,7 @@
 	    $(document).ready(function(){
 	    	$("#level").text($.cookie('level'));
 	    	$.ajax({
-	  			url : '/CXLearningCenter/user/categories.html',
+	  			url : '/CXLearningCenter/user/categories/'+$.cookie('levelID')+'.html',
 	            dataType: 'json',
 	            success : function(data) {
 	            	var table=$('#category');
@@ -36,7 +36,7 @@
 	            	{
 	            		var tr=$("<tr></tr>");
 	            		tr.appendTo(table);
-	            		$("<td><a style='cursor:pointer'>"+data[i].categoryName+"</a> <span class='pull-right text-muted small'><em>共"+data.length+"题</em></span></td>").appendTo(tr);
+	            		$("<td><a style='cursor:pointer'>"+data[i].categoryName+"</a> <span class='pull-right text-muted small'><em>共"+data[i].problemCounter+"题</em></span></td>").appendTo(tr);
 	            	}
 	            	$("#category a").each(function(index){
 			    		$(this).bind("click",function(){
