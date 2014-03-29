@@ -6,7 +6,7 @@
         <id column="idhardness" property="id" />
         <result column="level" property="level" />
     </resultMap>
-    <select id="selectHardnessById" parameterType="int" resultType="Hardness">
+    <select id="selectHardnessById" parameterType="int" resultMap = "resultListHardness">
 	    select * from `hardness` where idhardness = #{id}
 	</select>
 	<select id="selectHardnesses"  resultMap = "resultListHardness">
