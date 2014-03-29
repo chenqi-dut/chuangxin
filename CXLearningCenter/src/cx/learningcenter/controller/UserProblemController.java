@@ -1,7 +1,9 @@
 package cx.learningcenter.controller;
 
 import java.util.ArrayList;
+import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
 
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
@@ -134,15 +136,21 @@ public class UserProblemController {
 	@RequestMapping(value="/progress/{username}", method = RequestMethod.GET)
 	public @ResponseBody String getProgressByUserName(@PathVariable String username) {
  		
-		ProgressRecord pr = new ProgressRecord();
 		cx.learningcenter.model.User user = new cx.learningcenter.model.User();
 		// todo: 将两次查询通过resultmap关联压缩成一次，以提高效率，减少查询次数
 		user = userMapper.selectUserByUsername(username);
-		pr = progressrecordMapper.selectProgressRecordByUserid(user.getId());
+		ProgressRecord pr = progressrecordMapper.selectProgressRecordByUserid(user.getId());
 		
-		Category cat = new Category();
-	//	cat =
-		String json = JsonHelper.convertToJson(pr);
+		Category cat = categoryMapper.selectCategoryById(pr.getProblem().getCategory());
+		
+		Hardness hard = hardnessMapper.selectHardnessById(pr.getProblem().getHardness());
+		
+		Map<String,Object> a = new HashMap<String,Object>();
+		a.put("progressRecord", pr);
+		a.put("category", cat);
+		a.put("hardness", hard);
+		
+		String json = JsonHelper.convertToJson(a);
 		return json;
 	}
 	
