@@ -7,6 +7,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <script src="${pageContext.request.contextPath}/Resourse/bootstrap/js/jquery-1.10.2.js"></script>
     <script src="${pageContext.request.contextPath}/Resourse/bootstrap/js/bootstrap.min.js"></script>
+    <link href="${pageContext.request.contextPath}/Resourse/bootstrap/css/sb-admin.css" rel="stylesheet">
     <title>学习中心</title>
 
     
@@ -14,13 +15,13 @@
 
 <body>
 
-    <div id="wrapper">
+    <div id="wrapper" >
 
       
         <jsp:include page="/WEB-INF/jsp/userhome.jsp"/> 
         <!-- /.navbar-static-side -->
 
-        <div id="page-wrapper">
+        <div id="page-wrapper"  style="padding-bottom: 60px;">
        		 <ol class="breadcrumb">
        			 <li class="active" id="level">Data</li>
  				 <li class="active" id="category">Data</li>
@@ -85,6 +86,7 @@
         <!-- /#page-wrapper -->
 
     </div>
+
     <!-- /#wrapper -->
 
     <!-- Core Scripts - Include with every page -->
@@ -92,6 +94,11 @@
 
      <script >
  
+        function setfooter()
+        {
+        	var footertop=$("#page-wrapper").offset().top+$("#page-wrapper").height();
+        	$("#footer").css("top",footertop+50);
+        }
  		function changeByAjax(id,num)
         {
 			$.ajax({
@@ -146,10 +153,12 @@
 						anshtml+='</i> </div></div>';
 				 		$("#AnsCont").html(anshtml);
 	                }
-	            
+	  	 		 	setfooter();
 	            }
+				
 	        });
 			$("#AnsPanel").hide();
+			
 		}
  		function checkProblem(num,length)
  		{
@@ -230,19 +239,26 @@
             });
  			
  			
- 		
+            $("#page-wrapper").resize(function(){
+     			alert( window.screen.availHeight);
+     		});
 		
  			$("#CheckAnswer").click(function(){
  				
  				if($(this).text()=="查看答案")
  				{
- 					$("#AnsPanel").show(500);
+ 					$("#AnsPanel").show(500,function(){
+ 						setfooter();
+ 					});
  					$(this).text("收起答案");	
+ 		
  					
  				}
  				else
                 {
- 					$("#AnsPanel").hide(500);
+ 					$("#AnsPanel").hide(500,function(){
+ 						setfooter();
+ 					});
  					$(this).text("查看答案");	
                 }
 

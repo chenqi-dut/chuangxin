@@ -10,7 +10,7 @@
 </title>
  
 <body>
-	<div id="wrapper">
+	<div id="wapper">
 		<jsp:include page="/WEB-INF/jsp/userhome.jsp"/> 
 		 <div id="page-wrapper">
 			<ol class="breadcrumb">
@@ -23,7 +23,7 @@
             </div>
 		</div>
 	</div>
-	
+	 
 	 <script>
 	    $(document).ready(function(){
 	    	$("#level").text($.cookie('level'));

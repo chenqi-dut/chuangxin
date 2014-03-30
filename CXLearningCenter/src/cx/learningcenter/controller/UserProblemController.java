@@ -140,12 +140,12 @@ public class UserProblemController {
 		// todo: 将两次查询通过resultmap关联压缩成一次，以提高效率，减少查询次数
 		user = userMapper.selectUserByUsername(username);
 		if(user == null){
-			return "";
+			return "null";
 		}
 		ProgressRecord pr = progressrecordMapper.selectProgressRecordByUserid(user.getId());
 		
 		if(pr == null){
-			return "";
+			return "null";
 		}
 		Category cat = categoryMapper.selectCategoryById(pr.getProblem().getCategory());
 		

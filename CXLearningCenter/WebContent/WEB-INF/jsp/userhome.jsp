@@ -16,8 +16,8 @@
 	<script src="${pageContext.request.contextPath}/Resourse/bootstrap/js/jquery-1.10.2.js"></script>
 	<script src="${pageContext.request.contextPath}/Resourse/bootstrap/js/jquery.cookie.js"></script>
 <body>
-
- 		<nav class="navbar navbar-default navbar-static-top" style="margin-bottom: 0">
+<div >
+		<nav class="navbar navbar-default navbar-static-top" style="margin-bottom: 0">
             <div class="navbar-header" style="background-image:url('${pageContext.request.contextPath}/Resourse/bootstrap/images/bg2.png');width:100%;height:50px;">
             
                 <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".sidebar-collapse">
@@ -26,7 +26,7 @@
                     <span class="icon-bar"></span>
                     <span class="icon-bar"></span>
                 </button>
-                <a class="navbar-brand" href="index.html" ><font face="微软雅黑" color=" #FFFFFF" >在线题库</font></a>
+                <a class="navbar-brand" ><font face="微软雅黑" color=" #FFFFFF" >在线题库</font></a>
                 
                 <ul class="nav navbar-top-links navbar-right" >
                 <li class="dropdown">
@@ -56,17 +56,7 @@
  <nav class="navbar-default navbar-static-side" >
             <div class="sidebar-collapse">
                 <ul class="nav" id="side-menu">
-                    <li class="sidebar-search">
-                        <div class="input-group custom-search-form">
-                            <input type="text" class="form-control" placeholder="Search...">
-                            <span class="input-group-btn">
-                                <button class="btn btn-default" type="button">
-                                    <i class="fa fa-search"></i>
-                                </button>
-                            </span>
-                        </div>
-                        <!-- /input-group -->
-                    </li>
+                    
                     <li>
                         <a href="index.html"><i class="fa fa-dashboard fa-fw"></i> 欢迎访问</a>
                     </li>
@@ -93,7 +83,15 @@
             </div>
             <!-- /.sidebar-collapse -->
         </nav>
- 	
+</div>
+ 
+     <div class="container" id="footer" style="position:absolute;bottom:0px;text-align: center;">
+	 	    <footer class="footer">
+				Copyright &copy; 2014 by <a href="http://chuangxin.dlut.edu.cn" target="_blank">创新实验学院.</a><br/>
+				All Rights Reserved.<br/>
+		    </footer><!-- footer -->
+        </div>
+       
  	<script>
  	$(document).ready(function(){
  		$.ajax({
@@ -118,6 +116,10 @@
          		});
             }
  			
+ 		});
+
+ 		$(window).resize(function(){
+ 			alert($(window).height());
  		});
  	});
  		
