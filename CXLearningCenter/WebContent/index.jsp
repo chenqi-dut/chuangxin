@@ -3,7 +3,7 @@
 <html>
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
-<title>Insert title here</title>
+<title>Welcome</title>
 
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -28,7 +28,7 @@
 	     </div>
 		<div class="jumbotron thumbnail">
 			<div>
-				<h1><font face="微软雅黑">创意思维在线答题系统</font></h1>
+				<h1><font face="微软雅黑">创意思维在线学习系统</font></h1>
 				<p ><font face="微软雅黑">请注册账号或者登录</font></p>
 			</div>
 

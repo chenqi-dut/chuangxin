@@ -20,7 +20,7 @@
 	        <div class="col-md-12 ">
 	     		<div class="jumbotron thumbnail"> <!--  -->
 					<div>
-						<h1 style="text-align:center"><font face="微软雅黑">创意思维在线答题系统</font></h1>						
+						<h1 style="text-align:center"><font face="微软雅黑">创意思维在线学习系统</font></h1>						
 					</div>				
 				</div>	     
 	     	</div>
