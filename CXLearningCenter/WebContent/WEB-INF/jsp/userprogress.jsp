@@ -59,9 +59,9 @@
 	                   			 				 '难度'+data.category.categoryName+'的第'+num+'题"'+data.progressRecord.problem.title+
 	                   			 				 '",是否继续？');
 		                   	$("#bt_yes").click(function(){
-		            			$.cookie('level',"hehe");
+		            			$.cookie('level',data.hardness.level);
 		            			$.cookie('levelID',data.progressRecord.problem.hardness); 
-		            			$.cookie('category',"nimei");
+		            			$.cookie('category',data.category.categoryName);
 		            			$.cookie('categoryID',data.progressRecord.problem.category); 
 		            			$.cookie('problem',num);
 		            	    	location.href="learningcenterpage.html";
