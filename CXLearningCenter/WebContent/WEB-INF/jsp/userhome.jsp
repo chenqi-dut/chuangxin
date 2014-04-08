@@ -58,7 +58,7 @@
                 <ul class="nav" id="side-menu">
                     
                     <li>
-                        <a href="index.html"><i class="fa fa-dashboard fa-fw"></i> 欢迎访问</a>
+                        <a href="#"><i class="fa fa-dashboard fa-fw"></i> 欢迎访问</a>
                     </li>
                     <li>
                         <a href="#"><i class="fa fa-bar-chart-o fa-fw"></i> 学习中心<span class="fa arrow"></span></a>
@@ -66,17 +66,13 @@
                         </ul>
                         <!-- /.nav-second-level -->
                     </li>
-                    <li>
-                        <a href="userinfopage.html"><i class="fa fa-table fa-fw"></i>用户信息</a>
-                    </li>
+      
                     <sec:authorize ifAllGranted="ROLE_ADMIN">
                     <li>
                       <a href="adminpage.html"><i class="fa fa-edit fa-fw"></i> 题库设置</a>
                     </li>
                     </sec:authorize>
-                    <li>
-                        <a href="forms.html"><i class="fa fa-edit fa-fw"></i> 意见反馈</a>
-                    </li>
+                  
                
                  </ul>
                 <!-- /#side-menu -->
@@ -118,9 +114,6 @@
  			
  		});
 
- 		$(window).resize(function(){
- 			alert($(window).height());
- 		});
  	});
  		
  	</script>

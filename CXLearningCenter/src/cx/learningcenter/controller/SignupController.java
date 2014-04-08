@@ -42,7 +42,7 @@ public class SignupController {
 		}
 		return mav;
 	}
-
+   
 	@RequestMapping("/signup/adduser")
 	public ModelAndView addUser(HttpServletRequest request,
 			HttpServletResponse response) {
@@ -83,6 +83,18 @@ public class SignupController {
 		} catch (Exception e) {
 			e.printStackTrace();
 		}
+	}
+	@RequestMapping("/cqsignup")
+	public ModelAndView showq(HttpServletRequest request,
+			HttpServletResponse response,
+			@RequestParam(value = "message", required = false) String message) {
+
+		ModelAndView mav = new ModelAndView("chenqisignup");
+		if (message != null) {
+			message = "用户名已存在，请重新注册！";
+			mav.addObject("message", message);
+		}
+		return mav;
 	}
 
 }
